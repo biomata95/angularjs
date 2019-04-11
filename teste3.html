@@ -1,0 +1,28 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Welcome to LearnKode - A code learning platform</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+<body ng-app="app">
+    <div ng-controller="controllerName">
+        <div class="row">
+            <div class="col-md-3">
+                <select class="form-control" ng-model="ishide" ng-options="t.ishide as t.text for t in temp"></select>
+            </div>
+            <div class="well col-md-3" style="background-color:AppWorkspace;" ng-hide="ishide">Show Example</div>
+            <div class="well col-md-3" style="background-color:salmon;" ng-show="ishide">Hide Example</div>
+        </div>
+    </div>
+<script>
+    var app = angular.module("app", []);
+    app.controller('controllerName', ['$scope', function ($scope) {
+        $scope.ishide = true;
+        $scope.temp = [{ text: "Hide", ishide: true }, { text: "Show", ishide: false }];
+    }]);
+</script>
+</body>
+</html>

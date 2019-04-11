@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+<div ng-app="myApp">
+    <div ng-controller="AppCtrl">
+        {{message}} <br />
+        
+        <!--Options value is defualt 0, 1 ... and it's non change able -->
+        <span>Default Otions:</span>
+        <select ng-model="mail_notification" ng-options="c.key as c.value for c in mail_notifications"></select>
+        <br />
+        
+        <span>NG Repeater:</span>
+        <select ng-model="mail_notification">
+           <option ng-repeat="option in mail_notifications" value="{{option.key}}">{{option.key}}</option>
+        </select>
+        <br />                
+    </div>
+</div>
+</body>
+</html>
+
+<script type="text/javascript">
+    'use strict';
+
+var app = angular.module('myApp', []);
+app.controller('AppCtrl', function($scope){
+    $scope.mail_notifications = [
+        {
+            "key": "all",
+            "value": "For any event on all my projects"
+        },
+        {
+            "key": "selected",
+            "value": "For any event on the selected projects only..."
+        },
+        {
+            "key": "only_my_events",
+            "value": "Only for things I watch or I'm involved in"
+        },
+        {
+            "key": "only_assigned",
+            "value": "Only for things I am assigned to"
+        },
+        {
+            "key": "only_owner",
+            "value": "Only for things I am the owner of"
+        },
+        {
+            "key": "none",
+            "value": "No events"
+        }
+    ];
+    $scope.mail_notification = 'all';
+    $scope.message = "AngularJS select example";
+});
+
+</script>
